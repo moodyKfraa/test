@@ -27,6 +27,7 @@ function Result({
             setCorrectAnswers(data[0].correct_answers);
             let correctI = 0;
             let wrongeI = 0;
+            // eslint-disable-next-line array-callback-return
             data[0].correct_answers.map((correctAnswer, inn) => {
               if (correctAnswer === questions[inn].selectedAnswer) {
                 correctI++;

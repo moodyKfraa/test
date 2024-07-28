@@ -55,6 +55,7 @@ function Course() {
                     return;
                   }
                   if (userCourses.data[0].courses) {
+                    // eslint-disable-next-line array-callback-return
                     userCourses.data[0].courses.map((courseId) => {
                       if (courseId === data[0].id) {
                         fetchCourse(data[0].id);

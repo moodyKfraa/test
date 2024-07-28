@@ -43,6 +43,7 @@ function Courses({ userId }) {
             <div className={coursesStyle.course}>
               <img
                 src={`https://storage.bunnycdn.com/moody/courses_imgs/${course.img_url}?accessKey=bc6cca6a-239a-44b3-8849c0c36e0d-6472-4dd4`}
+                alt="img"
               />
               <NavLink to={"./course/" + course.name}>{course.name}</NavLink>
               <p>{course.price}</p>
