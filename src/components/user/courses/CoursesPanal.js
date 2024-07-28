@@ -3,6 +3,7 @@ import supabase from "../../../Supabase";
 import Toast from "../../toast/Toast";
 import coursesStyle from "./coursesPanal.module.css";
 import { NavLink } from "react-router-dom";
+import { fawaterkCheckout } from "https://app.fawaterk.com/fawaterkPlugin/fawaterkPlugin.min.js";
 
 function Courses({ userId }) {
   const [courses, setcourses] = useState([]);
@@ -53,6 +54,7 @@ function Courses({ userId }) {
       ) : (
         <h1>No courses</h1>
       )}
+      <div id="fawaterkDivId"></div>
     </div>
   );
 }
