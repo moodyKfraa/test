@@ -34,7 +34,7 @@ function HomeBenefits() {
           animate="visible"
           className={home.card}
         >
-          <ReactSVG src={timesaving} style={{ top: -70 }} />
+          <ReactSVG src={timesaving} style={{ top: -70, marginRight: -30 }} />
           <p>وفر وقتك و اتعلم من بيتك</p>
         </motion.div>
 
@@ -54,7 +54,7 @@ function HomeBenefits() {
           animate="visible"
           className={home.card}
         >
-          <ReactSVG src={homeworks} style={{ top: -110 }} />
+          <ReactSVG src={homeworks} style={{ top: -110, marginRight: -30 }} />
 
           <p>واجبات و امتحانات دورية</p>
         </motion.div>

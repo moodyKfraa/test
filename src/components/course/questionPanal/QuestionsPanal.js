@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import questionsPanal from "../course.module.css";
 import Question from "./Question";
 import Result from "./Result";
 import supabase from "../../../Supabase";
@@ -119,15 +120,16 @@ function QuestionPanal({ data, courseId, elId, userId }) {
   };
 
   return (
-    <div style={{ marginTop: 150 }}>
-      <h1>{data.name}</h1>
+    <div className={questionsPanal.questions_panal}>
       {activePanal === "prevAttempt" ? (
         <>
           <PrevAttempt
             prevAttempt={fetchedPrevMcq}
             handleShowPrevAttemptResults={handleShowPrevAttemptResults}
           />
-          <button onClick={handleNewAttempt}>new attempt</button>
+          <button className="primary_bt" onClick={handleNewAttempt}>
+            اعادة المحاولة
+          </button>
         </>
       ) : activePanal === "result" ? (
         <Result
@@ -140,10 +142,24 @@ function QuestionPanal({ data, courseId, elId, userId }) {
       ) : (
         activePanal === "questions" && (
           <>
-            <Question question={data[i]} />
-            <button onClick={next}>next</button>
-            <button onClick={prev}>pre</button>
-            <button onClick={submit}>submit</button>
+            <Question question={data[i]} inn={i + 1} length={data.length} />
+            <div className={questionsPanal.bts}>
+              {i > 0 && (
+                <button className="primary_bt" onClick={prev}>
+                  السابق
+                </button>
+              )}
+              {i < questions.length - 1 && (
+                <button className="primary_bt" onClick={next}>
+                  التالي
+                </button>
+              )}
+              {i === questions.length - 1 && (
+                <button className="primary_bt" onClick={submit}>
+                  تسليم
+                </button>
+              )}
+            </div>
           </>
         )
       )}

@@ -5,8 +5,9 @@ function VideoPanal({ data }) {
     <div>
       <div style={{ position: "relative", paddingTop: "56.25%" }}>
         <iframe
+          className="cc"
           title="rgh"
-          src={data.url}
+          src={`https://iframe.mediadelivery.net/play/278372/${data.url}`}
           loading="lazy"
           style={{
             border: "none",

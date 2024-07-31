@@ -24,6 +24,7 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
+  font-family: text_font;
 }
 .container {
   display: flex;
@@ -44,8 +45,15 @@ a {
 img {
   width: 100%;
 }
+.answer {
+  border: 1px solid var(--text-color);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 5px;
+  border-radius: 10px;
+}
 .selected_answer {
-  background-color: green;
+  background-color: var(--primary-color);
+  color: var(--normal-color);
 }
 
 .toast {
@@ -81,6 +89,21 @@ img {
   margin: 0;
   color: var(--text-color);
   font-size: 15px;
+}
+.primary_bt {
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--normal-color);
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: auto;
+}
+.cc #video-wrapper {
+  padding: 0;
+  margin: 0;
+  --video-aspect-ratio: 2;
 }
 @keyframes show {
   0% {

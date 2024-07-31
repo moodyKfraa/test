@@ -1,6 +1,8 @@
 import React from "react";
+import questionStyle from "../course.module.css";
 
-function Question({ question }) {
+function Question({ question, inn, length }) {
+  const abcd = ["ا", "ب", "ج", "د"];
   const handleSelect = (inn, e) => {
     document
       .querySelectorAll(".answer")
@@ -11,9 +13,14 @@ function Question({ question }) {
   };
 
   return (
-    <div>
-      <h1>{question.question}</h1>
-      <div>
+    <div className={questionStyle.question}>
+      <span className={questionStyle.length}>
+        {length}/{inn}
+      </span>
+      <h1>
+        {inn} : {question.question}
+      </h1>
+      <div className={questionStyle.answers}>
         {question.answers.map((answer, inn) => {
           return (
             <div
@@ -27,7 +34,7 @@ function Question({ question }) {
               }`}
               key={inn}
             >
-              {answer}
+              {abcd[inn]} : {answer}
             </div>
           );
         })}

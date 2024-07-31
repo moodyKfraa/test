@@ -1,11 +1,11 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
 import supabase from "../../../Supabase";
 import Toast from "../../toast/Toast";
 import coursesStyle from "./coursesPanal.module.css";
 import { NavLink } from "react-router-dom";
-import { fawaterkCheckout } from "https://app.fawaterk.com/fawaterkPlugin/fawaterkPlugin.min.js";
 
-function Courses({ userId }) {
+function Courses({ userId, user }) {
   const [courses, setcourses] = useState([]);
   useEffect(() => {
     const fetchCourses = async () => {
@@ -22,7 +22,9 @@ function Courses({ userId }) {
                 .eq("id", courseId)
                 .then(({ data, error }) => {
                   if (data) {
-                    setcourses(data);
+                    setcourses((prev) =>
+                      prev ? [...prev, data[0]] : [data[0]]
+                    );
                   }
                   if (error) {
                     Toast(error.message);
@@ -36,25 +38,27 @@ function Courses({ userId }) {
       fetchCourses();
     }
   }, [setcourses, userId]);
+
   return (
     <div className={coursesStyle.courses}>
-      {courses.length ? (
-        courses.map((course) => {
+      {courses ? (
+        courses.map((course, inn) => {
           return (
-            <div className={coursesStyle.course}>
-              <img
-                src={`https://storage.bunnycdn.com/moody/courses_imgs/${course.img_url}?accessKey=bc6cca6a-239a-44b3-8849c0c36e0d-6472-4dd4`}
-                alt="img"
-              />
-              <NavLink to={"./course/" + course.name}>{course.name}</NavLink>
-              <p>{course.price}</p>
-            </div>
+            <NavLink to={"./course/" + course.url} key={inn}>
+              <div className={coursesStyle.course}>
+                <img
+                  src={`https://storage.bunnycdn.com/as-main/courses_imgs/${course.img_url}?accessKey=113323c4-16ee-47ea-a2c0b1fd2943-03a6-4b68`}
+                  alt="img"
+                />
+                <hr />
+                <p>{course.title}</p>
+              </div>
+            </NavLink>
           );
         })
       ) : (
         <h1>No courses</h1>
       )}
-      <div id="fawaterkDivId"></div>
     </div>
   );
 }
